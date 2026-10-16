@@ -1,8 +1,8 @@
 # IOS Dynamic Link SDK
 
-**Repository:** [github.com/chiragjanjmeratecocraft/IOS-Dynamic-Link-SDK](https://github.com/chiragjanjmeratecocraft/IOS-Dynamic-Link-SDK)
+**Repository:** [github.com/linkhas/IOS-Dynamic-Link-SDK](https://github.com/linkhas/IOS-Dynamic-Link-SDK)
 
-**LinkHas Tool:** [https://dynamiclink.tecocraft.us](https://dynamiclink.tecocraft.us/) — create an account, add a project, get your `clientId`, and manage links.
+**LinkHas Tool:** [https://linkhas.com](https://linkhas.con) — create an account, add a project, get your `clientId`, and manage links.
 
 A native **Swift / iOS** SDK for **Deep Links**, **Universal Links**, **Deferred Deep Links**, and **in-app link sharing** using the Tecocraft LinkHas backend.
 
