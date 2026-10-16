@@ -2,7 +2,7 @@
 
 **Repository:** [github.com/linkhas/IOS-Dynamic-Link-SDK](https://github.com/linkhas/IOS-Dynamic-Link-SDK)
 
-**LinkHas Tool:** [https://linkhas.com](https://linkhas.con) — create an account, add a project, get your `clientId`, and manage links.
+**LinkHas Tool:** [https://linkhas.com](https://linkhas.com) — create an account, add a project, get your `clientId`, and manage links.
 
 A native **Swift / iOS** SDK for **Deep Links**, **Universal Links**, **Deferred Deep Links**, and **in-app link sharing** using the Tecocraft LinkHas backend.
 
@@ -31,14 +31,14 @@ Configure your project `clientId`, wrap your app root with `SmartLinkingRoot`, a
 In Xcode: **File → Add Package Dependencies…** and enter your repository URL:
 
 ```text
-https://github.com/chiragjanjmeratecocraft/IOS-Dynamic-Link-SDK.git
+https://github.com/linkhas/IOS-Dynamic-Link-SDK.git
 ```
 
 Or add to `Package.swift`:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/chiragjanjmeratecocraft/IOS-Dynamic-Link-SDK.git", from: "1.0.0")
+    .package(url: "https://github.com/linkhas/IOS-Dynamic-Link-SDK.git", from: "1.0.0")
 ],
 targets: [
     .target(name: "YourApp", dependencies: ["DynamicLinkSDK"])
@@ -73,7 +73,7 @@ Add to your app target’s `Info.plist` (scheme must match the LinkHas Tool):
 
 You need a **LinkHas Tool** account and project before the SDK can talk to the backend:
 
-1. Open **[https://dynamiclink.tecocraft.us](https://dynamiclink.tecocraft.us/)** and **Sign up** / **Log in**.
+1. Open **[https://linkhas.con](https://linkhas.con/)** and **Sign up** / **Log in**.
 2. Click **Add Project** and fill in your app details (iOS **bundle ID**, store URL, publication status).
 3. Open your project settings (⋮ menu) and copy the **`clientId`**.
 
@@ -163,7 +163,7 @@ SDK POST /public-link (clientId header + JSON payload)
       ↓
 Backend returns short_code
       ↓
-Share URL: https://backend-dynamiclink.tecocraft.us/{shortCode}
+Share URL: https://backend.linkhas.com/{shortCode}
       ↓
 iOS share sheet opens
       ↓
@@ -274,7 +274,7 @@ let result = try await client.createPublicLink(
 )
 
 // result.shortCode  → "3SxE2G"
-// result.shareURL   → https://backend-dynamiclink.tecocraft.us/3SxE2G
+// result.shareURL   → https://backend.linkhas.com/3SxE2G
 ```
 
 Present the share sheet with `DynamicLinkShareSheet`:
@@ -295,7 +295,7 @@ The project is identified by the **`clientId` header** — do not send `projectI
 Equivalent API call:
 
 ```sh
-curl --location 'https://backend-dynamiclink.tecocraft.us/api/links/public-link' \
+curl --location 'https://backend.linkhas.com/api/links/public-link' \
 --header 'Content-Type: application/json' \
 --header 'clientId: YOUR_CLIENT_ID' \
 --data '{
@@ -365,7 +365,7 @@ You can create links in two ways:
 
 ### Option A — LinkHas Tool (manual)
 
-Use the web dashboard at **[https://dynamiclink.tecocraft.us](https://dynamiclink.tecocraft.us/)**:
+Use the web dashboard at **[https://linkhas.com](https://linkhas.com/)**:
 
 1. **Sign up / Log in** to your account.
 2. Click **Add Project** and fill in your app details — **bundle ID**, store URL, and publication status.
@@ -419,7 +419,7 @@ Rebuild after any `Info.plist` change.
 ### Universal Links (HTTPS)
 
 1. Xcode → **Signing & Capabilities** → **Associated Domains**.
-2. Add: `applinks:backend-dynamiclink.tecocraft.us` (or your domain).
+2. Add: `applinks:backend.linkhas.com` (or your domain).
 3. Host `apple-app-site-association` on your domain over HTTPS (no redirects).
 4. Rebuild the app.
 
@@ -428,7 +428,7 @@ Example entitlements:
 ```xml
 <key>com.apple.developer.associated-domains</key>
 <array>
-  <string>applinks:backend-dynamiclink.tecocraft.us</string>
+  <string>applinks:backend.linkhas.com</string>
 </array>
 ```
 
@@ -487,13 +487,13 @@ xcrun simctl openurl booted "myapp://open?short_code=YOUR_CODE"
 ### App installed — Universal Link
 
 ```sh
-xcrun simctl openurl booted "https://backend-dynamiclink.tecocraft.us/s/YOUR_SLUG?short_code=YOUR_CODE"
+xcrun simctl openurl booted "https://backend.linkhas.com/s/YOUR_SLUG?short_code=YOUR_CODE"
 ```
 
 ### Hosted short-link page (HTML redirect)
 
 ```sh
-xcrun simctl openurl booted "https://backend-dynamiclink.tecocraft.us/s/YOUR_SLUG"
+xcrun simctl openurl booted "https://backend.linkhas.com/s/YOUR_SLUG"
 ```
 
 ### Deferred deep links
@@ -530,7 +530,7 @@ See [`Example/README.md`](Example/README.md) for screen names, JSON samples, and
 
 | Property | Description |
 |----------|-------------|
-| `baseURL` | API root (default: `https://backend-dynamiclink.tecocraft.us/api/links`) |
+| `baseURL` | API root (default: `https://backend.linkhas.com/api/links`) |
 | `clientId` | **Required.** Unique per project. Sent as `clientId` HTTP header on all API requests |
 | `timeout` | Request timeout in seconds (default: `10`) |
 | `pathShortCodeHosts` | Hosts where `https://host/{code}` uses the last path segment as short code |
@@ -628,7 +628,7 @@ SwiftUI wrapper for `UIActivityViewController`. Pass the `shareURL` and an optio
 
 | Issue | Fix |
 |-------|-----|
-| `clientId is required` error | Create a project at [dynamiclink.tecocraft.us](https://dynamiclink.tecocraft.us/), copy Client ID, set `DynamicLinkConfiguration(clientId:)` |
+| `clientId is required` error | Create a project at [linkhas.com](https://linkhas.com/), copy Client ID, set `DynamicLinkConfiguration(clientId:)` |
 | Share / public-link fails | Verify `clientId` header is set and matches your project |
 | Link does not open app | Check URL schemes in `Info.plist`; rebuild after changes |
 | Universal Link opens Safari only | Verify Associated Domains, AASA file, team ID + bundle ID |
@@ -659,7 +659,7 @@ MIT © Tecocraft
 
 ## Support
 
-- LinkHas Tool: [https://dynamiclink.tecocraft.us](https://dynamiclink.tecocraft.us/)
+- LinkHas Tool: [https://linkhas.com](https://linkhas.com/)
 - Email: support@tecocraft.com
-- Issues: [GitHub Issues](https://github.com/chiragjanjmeratecocraft/IOS-Dynamic-Link-SDK/issues)
-- Discussions: [GitHub Discussions](https://github.com/chiragjanjmeratecocraft/IOS-Dynamic-Link-SDK/discussions)
+- Issues: [GitHub Issues](https://github.com/linkhas/IOS-Dynamic-Link-SDK/issues)
+- Discussions: [GitHub Discussions](https://github.com/linkhas/IOS-Dynamic-Link-SDK/discussions)
