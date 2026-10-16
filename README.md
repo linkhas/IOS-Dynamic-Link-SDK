@@ -73,7 +73,7 @@ Add to your app target’s `Info.plist` (scheme must match the LinkHas Tool):
 
 You need a **LinkHas Tool** account and project before the SDK can talk to the backend:
 
-1. Open **[https://linkhas.con](https://linkhas.con/)** and **Sign up** / **Log in**.
+1. Open **[https://linkhas.com](https://linkhas.com/)** and **Sign up** / **Log in**.
 2. Click **Add Project** and fill in your app details (iOS **bundle ID**, store URL, publication status).
 3. Open your project settings (⋮ menu) and copy the **`clientId`**.
 
