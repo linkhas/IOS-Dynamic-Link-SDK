@@ -2,7 +2,7 @@ import Foundation
 import SwiftUI
 
 /// Default API root used by the published React Native SDK (`src/constants.ts`).
-public let defaultDynamicLinkBaseURL = URL(string: "https://backend-dynamiclink.tecocraft.us/api/links")!
+public let defaultDynamicLinkBaseURL = URL(string: "https://backend.linkhas.com/api/links")!
 
 public struct DynamicLinkConfiguration: Sendable {
   public static let clientIdHeaderName = "clientId"
@@ -88,7 +88,7 @@ public struct DynamicLinkClient: Sendable {
     /// Site root used for share URLs (`https://host/{shortCode}`), derived from ``DynamicLinkConfiguration/baseURL``.
     public var shareSiteRootURL: URL {
         guard let host = configuration.baseURL.host?.lowercased() else {
-            return URL(string: "https://backend-dynamiclink.tecocraft.us")!
+            return URL(string: "https://backend.linkhas.com")!
         }
         let scheme = configuration.baseURL.scheme ?? "https"
         return URL(string: "\(scheme)://\(host)")!

@@ -19,12 +19,12 @@ import Testing
 }
 
 @Test func defaultBaseURL_matchesRNConstants() {
-    #expect(defaultDynamicLinkBaseURL.absoluteString == "https://backend-dynamiclink.tecocraft.us/api/links")
+    #expect(defaultDynamicLinkBaseURL.absoluteString == "https://backend.linkhas.com/api/links")
 }
 
 @Test func hostedShortLink_detectsPath() {
-    let api = URL(string: "https://backend-dynamiclink.tecocraft.us/api/links")!
-    let u = URL(string: "https://backend-dynamiclink.tecocraft.us/s/9Xa80Hh")!
+    let api = URL(string: "https://backend.linkhas.com/api/links")!
+    let u = URL(string: "https://backend.linkhas.com/s/9Xa80Hh")!
     #expect(DynamicLinkClient.isHostedShortLinkPage(u, apiBaseURL: api))
     #expect(DynamicLinkClient.isHostedShortLinkPage(URL(string: "https://other.com/s/x")!, apiBaseURL: api) == false)
 }
@@ -55,10 +55,10 @@ import Testing
 }
 
 @Test func extractShortCode_pathFallback_onAllowedHost() {
-    let hosts: Set<String> = ["backend-dynamiclink.tecocraft.us"]
+    let hosts: Set<String> = ["backend.linkhas.com"]
   #expect(
         DynamicLinkClient.extractShortCodeWithPathFallback(
-            from: "https://backend-dynamiclink.tecocraft.us/3SxE2G",
+            from: "https://backend.linkhas.com/3SxE2G",
             allowedHosts: hosts
         ) == "3SxE2G"
     )
@@ -129,7 +129,7 @@ import Testing
 @Test func shareURL_usesSiteRootAndShortCode() {
     let client = DynamicLinkClient()
     let url = client.shareURL(forShortCode: "abc123")
-    #expect(url.absoluteString == "https://backend-dynamiclink.tecocraft.us/abc123")
+    #expect(url.absoluteString == "https://backend.linkhas.com/abc123")
 }
 
 @Test func encodePublicLinkCreateRequest_matchesAPI() throws {

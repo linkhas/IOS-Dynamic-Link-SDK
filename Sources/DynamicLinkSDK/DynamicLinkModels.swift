@@ -208,7 +208,7 @@ public struct PublicLinkCreateRequest: Encodable, Sendable {
 /// Result of creating a public share link (`POST /api/links/public-link`).
 public struct PublicLinkCreateResult: Sendable, Equatable {
     public let shortCode: String
-    /// HTTPS link to share, e.g. `https://backend-dynamiclink.tecocraft.us/{shortCode}`.
+    /// HTTPS link to share, e.g. `https://backend.linkhas.com/{shortCode}`.
     public let shareURL: URL
 }
 

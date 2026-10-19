@@ -9,7 +9,7 @@ Sample iOS app showing how **DynamicLinkSDK** handles deep links, Universal Link
 | Feature | What happens |
 |---------|----------------|
 | **Deep link (app installed)** | User taps link → app opens → JSON fetched → navigates to the right screen |
-| **Universal Link (HTTPS)** | Same flow using `https://backend-dynamiclink.tecocraft.us/...` |
+| **Universal Link (HTTPS)** | Same flow using `https://backend.linkhas.com/...` |
 | **Deferred deep link (app not installed)** | User taps link → App Store → install → first open → same JSON → same screen |
 | **Custom URL scheme** | Links like `deeplinkexample://open?short_code=...` |
 
@@ -134,10 +134,10 @@ Expected: **Home** tab shows URL and JSON payload; app navigates to the screen d
 
 ### 3. Universal Link (HTTPS)
 
-Ensure **Associated Domains** is enabled (`applinks:backend-dynamiclink.tecocraft.us` in entitlements) and your domain hosts a valid `apple-app-site-association` file.
+Ensure **Associated Domains** is enabled (`applinks:backend.linkhas.com` in entitlements) and your domain hosts a valid `apple-app-site-association` file.
 
 ```sh
-xcrun simctl openurl booted "https://backend-dynamiclink.tecocraft.us/s/YOUR_SLUG?short_code=YOUR_CODE"
+xcrun simctl openurl booted "https://backend.linkhas.com/s/YOUR_SLUG?short_code=YOUR_CODE"
 ```
 
 Or tap the HTTPS link in Safari on a device with the app installed.

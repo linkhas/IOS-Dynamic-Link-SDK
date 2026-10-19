@@ -4,7 +4,7 @@
 <dict>
 	<key>com.apple.developer.associated-domains</key>
 	<array>
-		<string>applinks:backend-dynamiclink.tecocraft.us</string>
+		<string>applinks:backend.linkhas.com</string>
 	</array>
 </dict>
 </plist>
